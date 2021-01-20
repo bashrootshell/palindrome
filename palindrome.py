@@ -35,7 +35,7 @@ if len(argv) > 2:
     longest_str = max(all_palindromes, key=len)
     shortest_str = min(all_palindromes, key=len)
 
-    print(f'There are {counter} {size}+char-palindromes and '
+    print(f'There are {counter} {str_size}+char-palindromes and '
           f'{len(all_palindromes)} total in file {argv[2]}.\n')
 
     print(f'--- Longest palindrome has: '
