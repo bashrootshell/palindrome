@@ -24,9 +24,9 @@ str_size = argv[1]
 if len(argv) > 2:
 
     with open(argv[2], 'r') as arquivo:
-        lines = arquivo.read()
+        #lines = arquivo.read()
 
-        for string in lines.split():
+        for string in arquivo.read().split():
             if string == string[::-1]:  # compares with reversed string
                 all_palindromes.append(string)
             if len(string) >= int(str_size) and string == string[::-1]:
@@ -35,7 +35,7 @@ if len(argv) > 2:
     longest_str = max(all_palindromes, key=len)
     shortest_str = min(all_palindromes, key=len)
 
-    print(f'There are {counter} {str_size}+char-palindromes and '
+    print(f'There are {counter} {str_size}+char_palindromes and '
           f'{len(all_palindromes)} total in file {argv[2]}.\n')
 
     print(f'--- Longest palindrome has: '
