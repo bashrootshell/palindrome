@@ -1,4 +1,4 @@
 # palindrome
 
-Just a palindrome finder program.
+Just a palindrome "finder" program.
  
