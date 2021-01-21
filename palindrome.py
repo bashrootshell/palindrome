@@ -7,8 +7,8 @@ from sys import argv
     It also prints:
     - the size of the longest palindrome
     - the size of the shortest palindrome
-    - the list of the longest and the shortest
-    palindromes of a given file.
+    - the longest and the shortest palindromes
+        of a given file.
 
     PEP8 compliant
     “Readability counts."
@@ -16,35 +16,36 @@ from sys import argv
     — The Zen of Python
 """
 
-
-counter = 0
-all_palindromes = []
-str_size = argv[1]
+all_palindromes = []  # stores all palindromes
+str_size = argv[1]  # number of required characters
+filename = argv[2]  # file to parse
+counter_plus = 0  # counts palindromes with str_size or more
+counter_exact = 0  # counts palindromes with exact str_size
 
 if len(argv) > 2:
 
-    with open(argv[2], 'r') as file:
+    with open(filename, 'r') as file:
         for string in file.read().split():
-            if string == string[::-1]:  # compares with reversed string
+            if string == string[::-1]:
                 all_palindromes.append(string)
-            if len(string) >= int(str_size) and string == string[::-1]:
-                counter += 1
+            if string == string[::-1] and len(string) >= int(str_size):
+                counter_plus += 1
+            if string == string[::-1] and len(string) == int(str_size):
+                counter_exact += 1
 
     longest_str = max(all_palindromes, key=len)
     shortest_str = min(all_palindromes, key=len)
 
-    print(f'There are {counter} {str_size}+char_palindromes and '
-          f'{len(all_palindromes)} total in file {argv[2]}.\n')
+    print(f'There are:\n'
+          f'{counter_plus} palindromes with {str_size} characters or more\n'
+          f'{counter_exact} palindromes with exact {str_size} characters\n'
+          f'{len(all_palindromes)} palindromes total in file {filename}.\n')
 
-    print(f'--- Longest palindrome has: '
+    print(f'---> Longest palindrome: "{longest_str}" > '
           f'{len(longest_str)} characters.\n')
 
-    print(f'--- Shortest palindrome has: '
+    print(f'---> Shortest palindrome: "{shortest_str}" > '
           f'{len(shortest_str)} characters.\n')
-
-    print(f'--- Longest palindrome(s): {longest_str}\n')
-
-    print(f'--- Shortest palindrome(s): {shortest_str}')
 
 else:
     print('Usage: palindrome.py numberofchars filename\n'
