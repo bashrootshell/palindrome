@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
 
 from sys import argv
+from string import punctuation
 
 """
-    File must have one string per line.
+    The program will remove all punctuation from file.
     Finds palindromes greater than X characters.
     It also prints:
     - the size of the longest palindrome
     - the size of the shortest palindrome
-    - the longest and the shortest palindromes
-        of a given file.
 
     PEP8 compliant
     “Readability counts."
@@ -26,7 +25,8 @@ counter_exact = 0  # counts palindromes with exact str_size
 if len(argv) > 2:
 
     with open(filename, 'r') as file:
-        for string in file.read().split():
+        for line in file.read().split():
+            string = "".join(ch for ch in line if ch not in (punctuation))
             if string == string[::-1]:
                 all_palindromes.append(string)
             if string == string[::-1] and len(string) >= int(str_size):
@@ -36,6 +36,9 @@ if len(argv) > 2:
 
     longest_str = max(all_palindromes, key=len)
     shortest_str = min(all_palindromes, key=len)
+
+    if int(str_size) < len(shortest_str) or int(str_size) > len(longest_str):
+        counter_plus, counter_exact = 0, 0
 
     print(f'There are:\n'
           f'{counter_plus} palindromes with {str_size} characters or more\n'
