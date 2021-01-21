@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from sys import argv
-from string import punctuation
+import string
 
 """
     The program will remove all punctuation from file.
@@ -21,12 +21,13 @@ str_size = argv[1]  # number of required characters
 filename = argv[2]  # file to parse
 counter_plus = 0  # counts palindromes with str_size or more
 counter_exact = 0  # counts palindromes with exact str_size
+rm_punct = str.maketrans('', '', string.punctuation)  # faster than join
 
 if len(argv) > 2:
 
     with open(filename, 'r') as file:
         for line in file.read().split():
-            string = "".join(ch for ch in line if ch not in (punctuation))
+            string = line.translate(rm_punct)
             if string == string[::-1]:
                 all_palindromes.append(string)
             if string == string[::-1] and len(string) >= int(str_size):
