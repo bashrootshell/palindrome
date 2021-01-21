@@ -1,4 +1,3 @@
 # palindrome
 
-Just a palindrome "finder" program!
- 
+Just a fun palindrome "finder" program!
