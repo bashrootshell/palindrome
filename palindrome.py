@@ -23,8 +23,8 @@ str_size = argv[1]
 
 if len(argv) > 2:
 
-    with open(argv[2], 'r') as arquivo:
-        for string in arquivo.read().split():
+    with open(argv[2], 'r') as file:
+        for string in file.read().split():
             if string == string[::-1]:  # compares with reversed string
                 all_palindromes.append(string)
             if len(string) >= int(str_size) and string == string[::-1]:
