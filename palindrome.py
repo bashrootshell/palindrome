@@ -3,6 +3,7 @@
 from sys import argv
 
 """
+    File must have one string per line.
     Finds palindromes greater than X characters.
     It also prints:
     - the size of the longest palindrome
