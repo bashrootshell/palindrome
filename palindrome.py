@@ -43,9 +43,9 @@ if len(argv) > 2:
         counter_plus, counter_exact = 0, 0
 
     print(f'There are:\n'
-          f'{counter_plus} palindromes with {str_size} characters or more\n'
+          f'{counter_plus} palindromes with {str_size} or more characters\n'
           f'{counter_exact} palindromes with exact {str_size} characters\n'
-          f'{len(all_palindromes)} palindromes total in file {filename}.\n')
+          f'{len(all_palindromes)} palindromes total in file {filename}\n')
 
     print(f'---> Longest palindrome: "{longest_str}" > '
           f'{len(longest_str)} characters.\n')

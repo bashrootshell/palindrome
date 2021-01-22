@@ -19,7 +19,7 @@ import string
 """
 
 all_palindromes = []  # stores all palindromes
-str_size = argv[1]  # number of required characters
+str_size = int(argv[1])  # number of required characters
 filename = argv[2]  # file to parse
 counter_plus = 0  # counts palindromes with str_size or more
 counter_exact = 0  # counts palindromes with exact str_size
@@ -36,8 +36,8 @@ if len(argv) > 2:
     longest_str = max(all_palindromes, key=len)
     shortest_str = min(all_palindromes, key=len)
 
-    if int(str_size) < len(shortest_str) or int(str_size) > len(longest_str):
-        counter_plus, counter_exact = 0, 0
+    if str_size < len(shortest_str) or str_size > len(longest_str):
+        counter_plus = counter_exact = 0
     else:
         for palindrome in all_palindromes:
             if len(palindrome) >= int(str_size):
@@ -46,9 +46,9 @@ if len(argv) > 2:
                 counter_exact += 1
 
     print(f'There are:\n'
-          f'{counter_plus} palindromes with {str_size} characters or more\n'
+          f'{counter_plus} palindromes with {str_size} or more characters\n'
           f'{counter_exact} palindromes with exact {str_size} characters\n'
-          f'{len(all_palindromes)} palindromes total in file {filename}.\n')
+          f'{len(all_palindromes)} palindromes total in file {filename}\n')
 
     print(f'---> Longest palindrome: "{longest_str}" > '
           f'{len(longest_str)} characters.\n')
