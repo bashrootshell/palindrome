@@ -4,6 +4,7 @@ from sys import argv
 import string
 
 """
+    Version: 1
     The program will remove all punctuation from file.
     Finds palindromes greater than X characters.
     It also prints:
@@ -21,7 +22,7 @@ str_size = argv[1]  # number of required characters
 filename = argv[2]  # file to parse
 counter_plus = 0  # counts palindromes with str_size or more
 counter_exact = 0  # counts palindromes with exact str_size
-rm_punct = str.maketrans('', '', string.punctuation)  # faster than join
+rm_punct = str.maketrans('', '', string.punctuation)  # faster than join method
 
 if len(argv) > 2:
 
