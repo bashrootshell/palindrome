@@ -18,14 +18,14 @@ import string
     — The Zen of Python
 """
 
-all_palindromes = []  # stores all palindromes
-str_size = int(argv[1])  # number of required characters
-filename = argv[2]  # file to parse
-counter_plus = 0  # counts palindromes with str_size or more
-counter_exact = 0  # counts palindromes with exact str_size
-rm_punct = str.maketrans('', '', string.punctuation)  # faster than join method
-
 if len(argv) > 2:
+
+    all_palindromes = []  # stores all palindromes
+    str_size = argv[1]  # number of required characters
+    filename = argv[2]  # file to parse
+    counter_plus = 0  # counts palindromes with str_size or more
+    counter_exact = 0  # counts palindromes with exact str_size
+    rm_punct = str.maketrans('', '', string.punctuation)  # faster than join
 
     with open(filename, 'r') as file:
         for line in file.read().split():
@@ -36,7 +36,7 @@ if len(argv) > 2:
     longest_str = max(all_palindromes, key=len)
     shortest_str = min(all_palindromes, key=len)
 
-    if str_size < len(shortest_str) or str_size > len(longest_str):
+    if int(str_size) < len(shortest_str) or int(str_size) > len(longest_str):
         counter_plus = counter_exact = 0
     else:
         for palindrome in all_palindromes:
