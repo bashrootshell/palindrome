@@ -33,9 +33,13 @@ if len(argv) > 2:
             if string == string[::-1]:
                 all_palindromes.append(string)
 
+    #  extracts the longest and the shortest palindromes (string)
     longest_str = max(all_palindromes, key=len)
     shortest_str = min(all_palindromes, key=len)
 
+    #  compares initial str_size with the shortest and longest palindromes
+    #  and forces counters to zero since there are no palindromes with
+    #  those sizes (shorter than shortest_str / longer than longest_str)
     if int(str_size) < len(shortest_str) or int(str_size) > len(longest_str):
         counter_plus = counter_exact = 0
     else:
