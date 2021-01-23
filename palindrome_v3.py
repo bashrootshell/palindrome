@@ -3,8 +3,9 @@
 from sys import argv
 
 """
-    Version 2: faster than version 1 (it now uses a list to
-    store all palindromes and count ocurrences).
+    Version 3: as fast as version 2
+    (it now uses list comprehensions to store
+    all palindromes and count ocurrences).
     Finds palindromes greater than X characters.
     It also prints:
     - the size of the longest palindrome
@@ -25,9 +26,8 @@ if len(argv) > 2:
     counter_exact = 0  # counts palindromes with exact str_size
 
     with open(filename, 'r') as file:
-        for string in file.read().split():
-            if string == string[::-1]:
-                all_palindromes.append(string)
+        lines = file.read().split()
+        all_palindromes = list(filter(lambda str: str == str[::-1], lines))
 
     #  extracts the longest and the shortest palindromes (string)
     longest_str = max(all_palindromes, key=len)
@@ -39,11 +39,10 @@ if len(argv) > 2:
     if int(str_size) < len(shortest_str) or int(str_size) > len(longest_str):
         counter_plus = counter_exact = 0
     else:
-        for palindrome in all_palindromes:
-            if len(palindrome) >= int(str_size):
-                counter_plus += 1
-            if len(palindrome) == int(str_size):
-                counter_exact += 1
+        [counter_plus := counter_plus + 1 for pp in all_palindromes
+         if len(pp) >= int(str_size)]
+        [counter_exact := counter_exact + 1 for pp in all_palindromes
+         if len(pp) == int(str_size)]
 
     print(f'There are:\n'
           f'{counter_plus} palindromes with {str_size} or more characters\n'

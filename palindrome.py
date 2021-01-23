@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
 
 from sys import argv
-import string
 
 """
     Version: 1
-    The program will remove all punctuation from file.
     Finds palindromes greater than X characters.
     It also prints:
     - the size of the longest palindrome
@@ -22,13 +20,11 @@ str_size = argv[1]  # number of required characters
 filename = argv[2]  # file to parse
 counter_plus = 0  # counts palindromes with str_size or more
 counter_exact = 0  # counts palindromes with exact str_size
-rm_punct = str.maketrans('', '', string.punctuation)  # faster than join method
 
 if len(argv) > 2:
 
     with open(filename, 'r') as file:
-        for line in file.read().split():
-            string = line.translate(rm_punct)
+        for string in file.read().split():
             if string == string[::-1]:
                 all_palindromes.append(string)
             if string == string[::-1] and len(string) >= int(str_size):
