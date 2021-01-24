@@ -5,7 +5,7 @@ from sys import argv
 """
     Version 3: as fast as version 2
     (it now uses list comprehensions to store
-    all palindromes and count ocurrences).
+    all palindromes and count occurrences).
     Finds palindromes greater than X characters.
     It also prints:
     - the size of the longest palindrome
