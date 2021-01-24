@@ -19,7 +19,7 @@ from sys import argv
 
 if len(argv) > 2:
 
-    all_palindromes = []  # stores all palindromes
+    all_palindromes = ()  # tuple stores all palindromes
     str_size = argv[1]  # number of required characters
     filename = argv[2]  # file to parse
     counter_plus = 0  # counts palindromes with str_size or more
