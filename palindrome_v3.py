@@ -39,7 +39,7 @@ if len(argv) > 2:
     if int(str_size) < len(shortest_str) or int(str_size) > len(longest_str):
         counter_plus = counter_exact = 0
     else:
-        #  walrus := taking place here :)
+        #  walrus := taking place in a list comprehension :)
         [counter_plus := counter_plus + 1 for pp in all_palindromes
          if len(pp) >= int(str_size)]
         [counter_exact := counter_exact + 1 for pp in all_palindromes
